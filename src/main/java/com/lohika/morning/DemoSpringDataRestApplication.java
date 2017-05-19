@@ -1,4 +1,4 @@
-package com.lohika.morning.engineer.demospringdatarest;
+package com.lohika.morning;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

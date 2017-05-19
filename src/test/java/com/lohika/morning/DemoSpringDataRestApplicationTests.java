@@ -1,4 +1,4 @@
-package com.lohika.morning.engineer.demospringdatarest;
+package com.lohika.morning;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
