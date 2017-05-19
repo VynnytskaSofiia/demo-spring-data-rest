@@ -1,14 +1,14 @@
-package com.lohika.morning.engineers.juniors;
+package com.lohika.morning.engineers.juniors.repositories;
 
-import com.lohika.morning.projections.DefaultProjection;
+import com.lohika.morning.engineers.juniors.JuniorEngineer;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.data.rest.core.annotation.RestResource;
 
 import java.util.List;
 
-@RepositoryRestResource(path = "juniors", excerptProjection = DefaultProjection.class)
-interface JuniorEngineerRepository extends PagingAndSortingRepository<JuniorEngineer, String> {
+@RepositoryRestResource(path = "juniors")
+public interface JuniorEngineerRepository extends PagingAndSortingRepository<JuniorEngineer, String>, CustomRepository {
 
     @Override
     @RestResource(exported = false)
