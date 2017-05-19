@@ -36,8 +36,6 @@ public class JuniorEngineerResourceProcessor implements ResourceProcessor<Resour
                             .delete(juniorEngineer.getId())).withRel("delete"));
         }
 
-        resource.add(entityLinks.linkFor(JuniorEngineer.class).withRel("juniors"));
-
         return resource;
     }
 }

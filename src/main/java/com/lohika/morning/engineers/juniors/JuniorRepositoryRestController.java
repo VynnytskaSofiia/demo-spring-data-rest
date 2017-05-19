@@ -1,6 +1,6 @@
 package com.lohika.morning.engineers.juniors;
 
-import com.lohika.morning.engineers.juniors.repositories.JuniorEngineerRepository;
+import com.lohika.morning.engineers.juniors.services.JuniorService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.rest.webmvc.RepositoryRestController;
 import org.springframework.data.rest.webmvc.support.RepositoryEntityLinks;
@@ -18,24 +18,23 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class JuniorRepositoryRestController {
 
     private final RepositoryEntityLinks entityLinks;
-    private final JuniorEngineerRepository seniorEngineerRepository;
+    private final JuniorService juniorService;
 
     @ResponseBody
-    @PostMapping(path = "/seniors/{id}/skill")
+    @PostMapping(path = "/juniors/{id}/skill")
     public ResponseEntity addSkill(@PathVariable final String id,
                                    @RequestParam final String newSkill) {
-        seniorEngineerRepository.addSkill(id, newSkill);
-        final JuniorEngineer seniorEngineer = seniorEngineerRepository.findOne(id);
-        Resource<JuniorEngineer> resource = new Resource<>(seniorEngineer);
+        final JuniorEngineer  juniorEngineer =  juniorService.addSkill(id, newSkill);
+        Resource<JuniorEngineer> resource = new Resource<>(juniorEngineer);
         resource.add(entityLinks.linkToSingleResource(JuniorEngineer.class, id));
 
         return ResponseEntity.ok(resource);
     }
 
     @ResponseBody
-    @PostMapping(path = "/seniors/{id}/delete")
+    @PostMapping(path = "/juniors/{id}/delete")
     public ResponseEntity delete(@PathVariable final String id) {
-        seniorEngineerRepository.delete(id);
+        juniorService.delete(id);
         return ResponseEntity.noContent().build();
     }
 }
